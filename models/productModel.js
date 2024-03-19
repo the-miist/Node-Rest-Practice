@@ -21,6 +21,12 @@ let productSchema = mongoose.Schema({
         type:Number,
         required:true
     }
+},
+{
+    timestamps: {
+        createdAt: "created_date",
+        updatedAt: "updated_date",
+      }, 
 })
 
 let product = mongoose.model("product", productSchema);
