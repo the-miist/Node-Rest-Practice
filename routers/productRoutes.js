@@ -1,5 +1,5 @@
 let express = require("express");
-let { verifyToken } = require("../controller/userController");
+let { verifyAdminToken, verifyAdminOrUserToken } = require("../controller/userController");
 let productRouter = express.Router();
 let {
   getProducts,
@@ -8,12 +8,12 @@ let {
   updateProduct,
 } = require("../controller/productController");
 
-productRouter.get("/products", verifyToken, getProducts);
+productRouter.get("/", getProducts);
 
-productRouter.post("/products", verifyToken, saveProduct);
+productRouter.post("/", verifyAdminToken, saveProduct);
 
-productRouter.delete("/products/:id", verifyToken, deleteProduct);
+productRouter.delete("/:id", verifyAdminToken, deleteProduct);
 
-productRouter.put("/products/:id", verifyToken, updateProduct);
+productRouter.put("/:id", verifyAdminOrUserToken, updateProduct);
 
 module.exports = productRouter;

@@ -3,7 +3,7 @@ let mongoose = require("mongoose");
 let userSchema = mongoose.Schema(
   {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
     username: {
@@ -14,6 +14,18 @@ let userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      required: true
+    },
+    productsInCart : {
+      type: [],
+      required: false
+    },
+    products : {
+      type: [],
+      required: false
+    }
   },
   {
     timestamps: {

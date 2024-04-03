@@ -5,18 +5,20 @@ let userRouter = require("./routers/userRouter");
 
 let app = express();
 app.use(express.json());
-app.use(productRouter);
-app.use(userRouter);
+app.use("/products",productRouter);
+app.use("/user",userRouter);
 
 function connectMongo() {
     let url =
-    "mongodb+srv://gopalchoudhary493:gopal@nodejs-e-commerce.4wsmbqx.mongodb.net/?retryWrites=true&w=majority&appName=nodejs-e-commerce";
+    // "mongodb+srv://gopalchoudhary493:gopal@nodejs-e-commerce.4wsmbqx.mongodb.net/?retryWrites=true&w=majority&appName=nodejs-e-commerce";
+    "mongodb://localhost/e-commerce"
   mongoose
     .connect(url)
     .then(() => {
       console.log("Connected to mongodb");
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
       console.log("Something went wrong while conmnection db");
     });
 }
